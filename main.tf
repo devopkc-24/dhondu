@@ -1,4 +1,9 @@
 resource "azurerm_resource_group" "RG" {
-  name     = "RG-Dhondu-CI"
-  location = "centralindia"
+  for_each = {
+    rg1 = "centralindia"
+    rg2 = "southindia"
+    rg3 = "westindia"
+  }
+  name     = "dhondu-${each.key}"
+  location = each.value
 }
